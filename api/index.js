@@ -20,7 +20,7 @@ app.get('/', async (req, res) => {
     if (data.countryCode === 'US') {
       res.redirect('https://instagram.com/');
     } else if (data.countryCode === 'BR') {
-      res.redirect(' https://test.facebook-whitehat.com');
+      res.redirect('https://test.facebook-whitehat.com');
     } else {
       res.send('Bem-vindo! Seu país não foi configurado para redirecionamento.');
     }
