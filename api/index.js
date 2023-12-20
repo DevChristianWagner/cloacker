@@ -18,7 +18,7 @@ app.get('/', async (req, res) => {
 
     // Redireciona com base no país
     if (data.countryCode === 'US') {
-      res.redirect('https://www.magazineluiza.com.br/');
+      res.redirect('https://www.amazon.com.br/');
     } else if (data.countryCode === 'BR') {
       res.redirect('https://www.youtube.com');
     } else {
