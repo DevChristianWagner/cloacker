@@ -1,30 +1,29 @@
 const express = require('express');
-const request = require('request');
+const axios = require('axios');
 
 const app = express();
-const port = 3333;
+const port = 3000;
 
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
   const userIP = req.ip;
 
-  // Use o serviço ipinfo.io para obter informações de localização com base no IP
-  request(`https://ipinfo.io/${userIP}`, { json: true }, (err, response, body) => {
-    if (err) {
-      console.error(err);
-      return res.status(500).send('Erro ao obter informações de localização.');
-    }
-
-    const country = body.country;
+  try {
+    // Use o serviço https://ip-api.com/ para obter informações de localização com base no IP
+    const response = await axios.get(`http://ip-api.com/json/${userIP}`);
+    const data = response.data;
 
     // Redireciona com base no país
-    if (country === 'US') {
+    if (data.countryCode === 'BR') {
+      res.redirect('https://chat.openai.com');
+    } else if (data.countryCode === 'US') {
       res.redirect('https://www.youtube.com');
-    } else if (country === 'BR') {
-      res.redirect('https://x.ai');
     } else {
       res.send('Bem-vindo! Seu país não foi configurado para redirecionamento.');
     }
-  });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send('Erro ao obter informações de localização.');
+  }
 });
 
 app.listen(port, () => {
