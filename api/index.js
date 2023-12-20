@@ -18,7 +18,7 @@ app.get('/', async (req, res) => {
 
     // Redireciona com base no país
     if (data.countryCode === 'US') {
-      res.redirect('https://chat.openai.com');
+      res.redirect('https://x.ai');
     } else if (data.countryCode === 'BR') {
       res.redirect('https://www.youtube.com');
     } else {
