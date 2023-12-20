@@ -18,9 +18,9 @@ app.get('/', async (req, res) => {
 
     // Redireciona com base no país
     if (data.countryCode === 'US') {
-      res.redirect('https://www.amazon.com.br/');
+      res.redirect('https://instagram.com/');
     } else if (data.countryCode === 'BR') {
-      res.redirect('https://www.youtube.com');
+      res.redirect(' https://test.facebook-whitehat.com');
     } else {
       res.send('Bem-vindo! Seu país não foi configurado para redirecionamento.');
     }
