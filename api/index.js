@@ -5,24 +5,19 @@ const requestIp = require('request-ip');
 const app = express();
 const port = 3000;
 
-// Adiciona middleware para obter o endereço IP do cliente
 app.use(requestIp.mw());
 
 app.get('/', async (req, res) => {
   const userIP = req.clientIp;
 
   try {
-    // Use o serviço https://ip-api.com/ para obter informações de localização com base no IP
     const response = await axios.get(`http://ip-api.com/json/${userIP}`);
     const data = response.data;
 
-    // Redireciona com base no país
     if (data.countryCode === 'US') {
-      res.redirect('https://instagram.com/');
-    } else if (data.countryCode === 'BR') {
-      res.redirect('https://test.facebook-whitehat.com');
+      res.redirect('https://www.amazon.com/');
     } else {
-      res.send('Bem-vindo! Seu país não foi configurado para redirecionamento.');
+      res.redirect('https://adorable-mandazi-8f986f.netlify.app/');
     }
   } catch (error) {
     console.error(error.message);
